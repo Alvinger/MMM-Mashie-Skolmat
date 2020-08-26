@@ -41,6 +41,7 @@ module.exports = NodeHelper.create({
 	//                             See broadcastItems() for args doc.
 	loadFeed: function(url, allEntriesParsedCB) {
 		var items = [];
+		var today = moment().startOf('day');
 		var self = this;
 
 		ical.fromURL(url, {}, function (err, data) {
@@ -48,14 +49,13 @@ module.exports = NodeHelper.create({
 				if (data.hasOwnProperty(k)) {
 					var entry = data[k];
 					if (entry.type == 'VEVENT') {
-//						console.log(JSON.stringify(entry, null, 2));
-						console.log('Datum: ' + moment(entry.start).format('YYYY-MM-DD'));
-						console.log('Matsedel: ' + entry.summary);
-						console.log('Matsedel: ' + entry.description);
+						// Don't show earlier days than today
+						if (moment(entry.start) < today) {
+							continue;
+						}
 						// Format title
 						var title = moment(entry.start).format('dddd [- Vecka] WW');
 						title = title.charAt(0).toUpperCase() + title.substring(1);
-						console.log("Title=" + title);
 						// Split description into separate lines
 						// Remove text up until first colon
 						// Skip empty lines
@@ -69,7 +69,6 @@ module.exports = NodeHelper.create({
 								description += desc[d];
 							}
 						}
-						console.log(JSON.stringify(desc, null, 2));
 						items.push( { title: title, description: description } );
 					}
 				}
