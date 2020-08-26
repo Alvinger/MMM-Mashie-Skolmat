@@ -19,6 +19,5 @@
 		"type": "git",
 		"url": "https://github.com/alvinger/MMM-Koket-by-Sodexo"
 	},
-	"dependencies": {
-	}
+	"dependencies": {}
 }
