@@ -1,0 +1,24 @@
+{
+	"name": "MMM-Koket-by-Sodexo",
+	"version": "1.0.0",
+	"description": "A MagicMirror2 module that shows school lunch menus in Sweden from Köket by Sodex (sodexo.miashie.com/public/app)",
+	"keywords": [
+		"magic mirror",
+		"skolmat",
+		"köket by sodexo",
+		"sweden"
+	],
+	"homepage": "https://github.com/alvinger/MMM-Koket-by-Sodexo#readme",
+	"bugs": {
+		"url": "https://github.com/alvinger/MMM-Koket-by-Sodexo/issues"
+	},
+	"license": "MIT",
+	"author": "Johan Alvinger",
+	"main": "MMM-Koket-by-Sodexo.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alvinger/MMM-Koket-by-Sodexo"
+	},
+	"dependencies": {
+	}
+}
