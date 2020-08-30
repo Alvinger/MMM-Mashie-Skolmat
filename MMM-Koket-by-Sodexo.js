@@ -68,15 +68,15 @@ Module.register('MMM-Koket-by-Sodexo', {
 
 		// Loading message.
 		this.items = [];
-		this.items.push( { title: 'Laddar...', description: '' } );
+		this.items.push( { title: this.translate('LOADING'), description: '' } );
 
 		// Tell node_helper to load RSS feed at startup.
 		this.sendSocketNotification('LOAD_FEED', { url: this.config.url });
 
-		// Make sure RSS feed is reloaded each hour.
+		// Make sure RSS feed is reloaded every 6 hours.
 		var self = this;
 		setInterval(function() {
 			self.sendSocketNotification('LOAD_FEED', { url: self.config.url });
-		}, 60 * 60 * 1000); // In millisecs. Refresh every hour.
+		}, 6 * 60 * 60 * 1000); // In millisecs. Refresh every hour.
 	}
 });
