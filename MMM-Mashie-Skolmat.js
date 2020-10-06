@@ -1,12 +1,12 @@
 /* Magic Mirror
- * Module: MMM-Koket-by-Sodexo
+ * Module: MMM-Mashie-Skolmat
  *
  * By Johan Alvinger, https://github.com/Alvinger
  * Based on the MMM-Skolmaten module by Johan Persson, https://github.com/retroflex
  * MIT Licensed.
  */
 
-Module.register('MMM-Koket-by-Sodexo', {
+Module.register('MMM-Mashie-Skolmat', {
 	// Default configuration.
 	// days is the number of days to display.
 	// url is URL of feed, e.g. 'https://skolmaten.se/furuhallskolan/rss/'.
@@ -16,7 +16,7 @@ Module.register('MMM-Koket-by-Sodexo', {
 	},
 
 	getStyles: function() {
-		return [ 'MMM-Koket-by-Sodexo.css' ];
+		return [ 'MMM-Mashie-Skolmat.css' ];
 	},
 
 	// Notification from node_helper.js.
@@ -77,6 +77,6 @@ Module.register('MMM-Koket-by-Sodexo', {
 		var self = this;
 		setInterval(function() {
 			self.sendSocketNotification('LOAD_FEED', { url: self.config.url });
-		}, 6 * 60 * 60 * 1000); // In millisecs. Refresh every hour.
+		}, 3 * 60 * 60 * 1000); // In millisecs. Refresh every three hours.
 	}
 });

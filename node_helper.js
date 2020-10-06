@@ -1,5 +1,5 @@
 /* Magic Mirror
- * Module: MMM-Koket-by-Sodexo
+ * Module: MMM-Mashie-Skolmat
  *
  * By Johan Alvinger, https://github.com/Alvinger
  * Based on a script by Johan Persson, https://github.com/retroflex

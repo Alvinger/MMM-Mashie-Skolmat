@@ -1,23 +1,24 @@
 {
-	"name": "MMM-Koket-by-Sodexo",
+	"name": "MMM-Mashie-Skolmat",
 	"version": "1.0.0",
-	"description": "A MagicMirror2 module that shows school lunch menus in Sweden from Köket by Sodex (sodexo.miashie.com/public/app)",
+	"description": "A MagicMirror2 module that shows school lunch menus from the Mashie app (mpi.miashie.com/public/app)",
 	"keywords": [
 		"magic mirror",
 		"skolmat",
+		"mashie",
 		"köket by sodexo",
 		"sweden"
 	],
-	"homepage": "https://github.com/alvinger/MMM-Koket-by-Sodexo#readme",
+	"homepage": "https://github.com/Alvinger/MMM-Mashie-Skolmat#readme",
 	"bugs": {
-		"url": "https://github.com/alvinger/MMM-Koket-by-Sodexo/issues"
+		"url": "https://github.com/Alvinger/MMM-Mashie-Skolmat/issues"
 	},
 	"license": "MIT",
 	"author": "Johan Alvinger",
-	"main": "MMM-Koket-by-Sodexo.js",
+	"main": "MMM-Mashie-Skolmat.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/alvinger/MMM-Koket-by-Sodexo"
+		"url": "https://github.com/Alvinger/MMM-Mashie-Skolmat"
 	},
 	"dependencies": {}
 }
