@@ -14,15 +14,15 @@ A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that shows sch
 ```
 3. Add the module to the ../MagicMirror/config/config.js, example:
 ```
-		{
-			module: 'MMM-Mashie-Skolmat',
-			header: 'Norra real',
-			position: 'bottom_right',
-			config: {
-				days: 1,
-				url: 'https://sodexo.mashie.com:443/public/icalendar/St%20Eriks%20gymnasium/6639b607.ics'
-			}
-		},
+                {
+                        module: "MMM-Mashie-Skolmat",
+                        header: "Matsedel Bromma",
+                        position: "bottom_left",
+                        config: {
+                                days: 1,
+                                url: "https://mpi.mashie.com/public/icalendar/Fraiche%20Catering/4224e413.ics"
+                        }
+                },
 ```
 
 # Configuration
