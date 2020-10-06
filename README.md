@@ -1,5 +1,5 @@
 # MMM-Mashie-Skolmat
-A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that shows school lunch menus in Sweden from Köket by Sodexo (sodexo.mashie.com/public/app).
+A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that shows school lunch menus from Mashie.com (mpi.mashie.com/public/app).
 
 # Installation
 1. Clone repo:
