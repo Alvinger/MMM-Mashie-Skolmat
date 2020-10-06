@@ -32,7 +32,11 @@ You can choose how the many days should be shown by setting the parameter "days"
 
 # Getting the correct URL
 Go to the Mashie web app (https://mpi.mashie.com/public/app) and search for your school.
+
 Note: This module can also be used for "Köket by Sodexo" menus as they use Mashie but with a different URL. The "Köket by Sodexo" URL is https://sodexo.mashie.com/public/app.
-Click on the school to see the current menu
+
+Click on the school to see the current menu.
+
 Right-click on "Calendar" in the left hand menu and copy the hyperlink.
+
 Replace "webcal" with "https" and use the result as the URL in the configuration.
