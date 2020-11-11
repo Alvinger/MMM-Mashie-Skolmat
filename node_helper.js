@@ -2,47 +2,83 @@
  * Module: MMM-Mashie-Skolmat
  *
  * By Johan Alvinger, https://github.com/Alvinger
- * Based on a script by Johan Persson, https://github.com/retroflex
+ * Based on scripts by
+ *	Johan Persson, https://github.com/retroflex
+ *	Benjamin Angst http://www.beny.ch which is
+ *	Michael Teeuw http://michaelteeuw.nl
  * MIT Licensed.
  */
 
 const NodeHelper = require('node_helper');
 const ical = require('./vendor/ical.js');
-const moment = require('moment');
+const moment = require("moment");
 
 module.exports = NodeHelper.create({
+
+	// Define start sequence.
 	start: function() {
+		console.log("Starting node_helper for module: " + this.name);
+		this.started = false;
 	},
 
-	// Send items to the module js.
-	// @param url - URL of the feed.
-	// @param items - Array of items. Each item has a title and a description.
-	// @param self - Pointer to this. Needed when this method is used as callback.
-	broadcastItems: function(url, items, self) {
-		self.sendSocketNotification('ITEMS', {
-			url: url,
-			items: items
-		});
-	},
-
-	// Notification from module js.
-	// @param notification - Notification type.
-	// @param payload - Contains url of feed.
+	// Receive notification
 	socketNotificationReceived: function(notification, payload) {
-		if (notification === 'LOAD_FEED') {
-			this.loadFeed(payload.url, this.broadcastItems);
-			return;
+   		console.log("node_helper for " + this.name + " received a socket notification: " + notification + " - Payload: " + JSON.stringify(payload, null, 2));
+		if (notification === "CONFIG" && this.started == false) {
+			this.config = payload;
+			moment.locale(config.language);
+			this.started = true;
+			this.items = [];
+			this.updateItems();
 		}
 	},
 
-	// Load and parse a feed.
+	/* updateItems()
+	 * Check current departures and remove old ones. Requests new departure data if needed.
+	 */
+	updateItems: function() {
+		var self = this;
+		var now = moment();
+
+		this.retrieveURL(this.config.url);
+	},
+
+	/* sendItems()
+	 * Send data to frontend.
+	 */
+	sendItems: function(items) {
+		// Notify the main module that we have new data
+		// Schedule update
+		if (items.length > 0) {
+			this.sendSocketNotification("ITEMS", items);
+		}
+		this.scheduleUpdate();
+	},
+
+	/* scheduleUpdate()
+	 * Schedule next update.
+	 *
+	 * argument delay number - Milliseconds before next update. If empty, this.config.updateInterval is used.
+	 */
+	scheduleUpdate: function(delay) {
+		var self = this;
+		var nextLoad = this.config.updateInterval;
+		if (typeof delay !== "undefined" && delay >= 0) {
+			nextLoad = delay;
+		}
+
+		clearTimeout(this.updateTimer);
+		this.updateTimer = setTimeout(function() {
+			self.updateItems();
+		}, nextLoad);
+	},
+	// Retrieve data from url
 	// @param url - URL of the feed.
-	// @param allEntriesParsedCB - Callback called when all items have been parsed.
-	//                             See broadcastItems() for args doc.
-	loadFeed: function(url, allEntriesParsedCB) {
+	retrieveURL: function(url) {
 		var items = [];
 		var today = moment().startOf('day');
 		var self = this;
+		var days = 0;
 
 		ical.fromURL(url, {}, function (err, data) {
 			for (var k in data) {
@@ -69,11 +105,15 @@ module.exports = NodeHelper.create({
 								description += desc[d];
 							}
 						}
-						items.push( { title: title, description: description } );
+						// Only show the configured number of days
+						if (days < self.config.days) {
+							items.push( { title: title, description: description } );
+							days++;
+						}
 					}
 				}
 			}
-			allEntriesParsedCB(url, items, self);
+			self.sendItems(items);
 		});
 	}
 });

@@ -20,15 +20,16 @@ A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that shows sch
                         position: "bottom_left",
                         config: {
                                 days: 1,
-                                url: "https://mpi.mashie.com/public/icalendar/Fraiche%20Catering/4224e413.ics"
+                                url: "https://mpi.mashie.com/public/icalendar/.....ics",
+				endOfToday: 23
                         }
                 },
 ```
 
 # Configuration
-By default the module will show lunch menu for today (or next day if no entry for today).
+By default the module will show lunch menu for today (or next day if no entry for today or after cutoff).
 
-You can choose how the many days should be shown by setting the parameter "days" to the number of days to be shown. If "days" are set to 1 and no menu item exists for today, the module will try to show tomorrow's menu.
+You can choose how the many days should be shown by setting the parameter "days" to the number of days to be shown. If "days" are set to 1 and no menu item exists for today, the module will try to show tomorrow's menu. You can change when the modules displays next day's menu by setting endOfToday.
 
 # Getting the correct URL
 Go to the Mashie web app (https://mpi.mashie.com/public/app) and search for your school.
