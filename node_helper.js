@@ -6,6 +6,7 @@
  * MIT Licensed.
  */
 
+const Log = require("../../js/logger.js");
 const NodeHelper = require('node_helper');
 const ical = require('./vendor/ical.js');
 const moment = require('moment');
@@ -43,7 +44,7 @@ module.exports = NodeHelper.create({
 		var self = this;
 		var items = [];
 		var today = moment().startOf('day');
-		if (moment().hour >= cfg.endOfToday) {
+		if (moment().hour() >= cfg.endOfToday) {
 			// After endOfToday, tomorrow is considered today
 			today.add(1, 'day');
 		}
