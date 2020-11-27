@@ -44,8 +44,8 @@ module.exports = NodeHelper.create({
 		var self = this;
 		var items = [];
 		var today = moment().startOf('day');
-		if (moment().hour() >= cfg.endOfToday) {
-			// After endOfToday, tomorrow is considered today
+		if (moment().hour() >= cfg.cutoffHour) {
+			// After cutoffHour, tomorrow is considered today
 			today.add(1, 'day');
 		}
 

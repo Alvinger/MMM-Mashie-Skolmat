@@ -21,7 +21,7 @@ A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that shows sch
                         config: {
                                 days: 1,
                                 url: "https://mpi.mashie.com/public/icalendar/.....ics",
-				endOfToday: 23
+				cutoffHour: 23
                         }
                 },
 ```
@@ -29,7 +29,7 @@ A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that shows sch
 # Configuration
 By default the module will show lunch menu for today (or next day if no entry for today or after cutoff).
 
-You can choose how the many days should be shown by setting the parameter "days" to the number of days to be shown. If "days" are set to 1 and no menu item exists for today, the module will try to show tomorrow's menu. You can change when the modules displays next day's menu by setting endOfToday.
+You can choose how the many days should be shown by setting the parameter "days" to the number of days to be shown. If "days" are set to 1 and no menu item exists for today, the module will try to show tomorrow's menu. You can change when the modules starts displaying next day's menu by setting cutoffHour.
 
 # Getting the correct URL
 Go to the Mashie web app (https://mpi.mashie.com/public/app) and search for your school.

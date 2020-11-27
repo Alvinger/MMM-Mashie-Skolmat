@@ -9,11 +9,11 @@
 Module.register('MMM-Mashie-Skolmat', {
 	// Default configuration.
 	// days is the number of days to display.
-	// endOfToday is when today's items are not longer included
+	// cutoffHour is the hour when today's items should no longer be displayed
 	// url is URL of feed, e.g. 'https://skolmaten.se/furuhallskolan/rss/'.
 	defaults: {
 		days: 1,
-		endOfToday: 23,
+		cutoffHour: 23,
 		url: ''
 	},
 
